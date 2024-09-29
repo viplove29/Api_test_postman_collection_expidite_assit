@@ -1,0 +1,354 @@
+{
+	"id": "cc71e8fa-8059-4744-8059-294071e0dce7",
+	"name": "API Test Expedite Assist",
+	"timestamp": "2024-09-29T10:58:05.859Z",
+	"collection_id": "37549759-ee2efad0-8aa8-4793-9ea1-e590fe1a7c8e",
+	"folder_id": 0,
+	"environment_id": "37549759-5353e1de-00f0-4780-92b9-e06ac260f19f",
+	"totalPass": 22,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2024-09-29T10:57:59.788Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "70bed22b-80dc-4c21-9a90-1d824c1c99d9",
+			"name": "1.a Register Admin",
+			"url": "http://100.27.30.112/api/register_admin",
+			"time": 621,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Successful POST request": true,
+				"Verify admin registration succesful message": true
+			},
+			"testPassFailCounts": {
+				"Successful POST request": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify admin registration succesful message": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				621
+			],
+			"allTests": [
+				{
+					"Successful POST request": true,
+					"Verify admin registration succesful message": true
+				}
+			]
+		},
+		{
+			"id": "f7592801-6ab0-417b-926c-07b54826359a",
+			"name": "1.b Register User",
+			"url": "http://100.27.30.112/api/register",
+			"time": 796,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Successful POST request": true,
+				"Verify registration succesful message": true
+			},
+			"testPassFailCounts": {
+				"Successful POST request": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify registration succesful message": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				796
+			],
+			"allTests": [
+				{
+					"Successful POST request": true,
+					"Verify registration succesful message": true
+				}
+			]
+		},
+		{
+			"id": "cda3640d-aef2-4573-86d1-a58bc8b5991f",
+			"name": "2.a Login",
+			"url": "http://100.27.30.112/api/login/",
+			"time": 604,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Successful POST request": true,
+				"Verify that user is not admin": true,
+				"Verify login message": true,
+				"Verify user_id is number": true
+			},
+			"testPassFailCounts": {
+				"Successful POST request": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify that user is not admin": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify login message": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify user_id is number": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				604
+			],
+			"allTests": [
+				{
+					"Successful POST request": true,
+					"Verify that user is not admin": true,
+					"Verify login message": true,
+					"Verify user_id is number": true
+				}
+			]
+		},
+		{
+			"id": "01e3d518-ee99-4e15-9063-2c7a236f0fac",
+			"name": "2.b Login as Admin",
+			"url": "http://100.27.30.112/api/login/",
+			"time": 664,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Successful POST request": true,
+				"Verify that user is not admin": true,
+				"Verify login message": true,
+				"Verify user_id is number": true
+			},
+			"testPassFailCounts": {
+				"Successful POST request": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify that user is not admin": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify login message": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Verify user_id is number": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				664
+			],
+			"allTests": [
+				{
+					"Successful POST request": true,
+					"Verify that user is not admin": true,
+					"Verify login message": true,
+					"Verify user_id is number": true
+				}
+			]
+		},
+		{
+			"id": "9a03ff3c-7d7b-49e8-95eb-8e0c897f7c01",
+			"name": "3. Create New Ticket",
+			"url": "http://100.27.30.112/api/tickets/",
+			"time": 236,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Set 'ticketId' environment variable": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Set 'ticketId' environment variable": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				236
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Set 'ticketId' environment variable": true
+				}
+			]
+		},
+		{
+			"id": "8eaba175-b059-45f9-8d8e-9ee0e225ea8a",
+			"name": "4. Get All Tickets Users & verify above ticket",
+			"url": "http://100.27.30.112/api/tickets/user/1",
+			"time": 709,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response time is less than 200ms": true,
+				"Ticket with ID 546 exists in the response": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 200ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Ticket with ID 546 exists in the response": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				709
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response time is less than 200ms": true,
+					"Ticket with ID 546 exists in the response": true
+				}
+			]
+		},
+		{
+			"id": "54eb0ccd-a57b-419b-9206-f93d19f4fb91",
+			"name": "5. Create New Case",
+			"url": "http://100.27.30.112/api/cases/",
+			"time": 235,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Set 'caseId' environment variable": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Set 'caseId' environment variable": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				235
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Set 'caseId' environment variable": true
+				}
+			]
+		},
+		{
+			"id": "adafc086-b623-42f7-a4ee-25e6f5d786af",
+			"name": "6. Get All Cases & verify above cases created",
+			"url": "http://100.27.30.112/api/cases/user/1",
+			"time": 235,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Response time is less than 2000ms": true,
+				"Ticket with ID 510 exists in the response": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 2000ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Ticket with ID 510 exists in the response": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				235
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Response time is less than 2000ms": true,
+					"Ticket with ID 510 exists in the response": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 4100,
+	"collection": {
+		"requests": [
+			{
+				"id": "70bed22b-80dc-4c21-9a90-1d824c1c99d9",
+				"method": "POST"
+			},
+			{
+				"id": "f7592801-6ab0-417b-926c-07b54826359a",
+				"method": "POST"
+			},
+			{
+				"id": "cda3640d-aef2-4573-86d1-a58bc8b5991f",
+				"method": "POST"
+			},
+			{
+				"id": "01e3d518-ee99-4e15-9063-2c7a236f0fac",
+				"method": "POST"
+			},
+			{
+				"id": "9a03ff3c-7d7b-49e8-95eb-8e0c897f7c01",
+				"method": "POST"
+			},
+			{
+				"id": "8eaba175-b059-45f9-8d8e-9ee0e225ea8a",
+				"method": "GET"
+			},
+			{
+				"id": "54eb0ccd-a57b-419b-9206-f93d19f4fb91",
+				"method": "POST"
+			},
+			{
+				"id": "adafc086-b623-42f7-a4ee-25e6f5d786af",
+				"method": "GET"
+			}
+		]
+	}
+}
