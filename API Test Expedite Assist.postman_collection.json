@@ -1,0 +1,461 @@
+{
+	"info": {
+		"_postman_id": "ee2efad0-8aa8-4793-9ea1-e590fe1a7c8e",
+		"name": "API Test Expedite Assist",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37549759",
+		"_collection_link": "https://www.postman.com/marvels-1545/workspace/learn-apiitesting/collection/37549759-ee2efad0-8aa8-4793-9ea1-e590fe1a7c8e?action=share&source=collection_link&creator=37549759"
+	},
+	"item": [
+		{
+			"name": "1.a Register Admin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Verify admin registration succesful message\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.message).to.eql(\"Admin user created successfully\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"function generateRandomEmail() {\r",
+							"  const randomNumber = Math.floor(Math.random() * 1000000); // Generates a random number between 0 and 999999\r",
+							"  const emailAdmin = `testAdmin${randomNumber}@example.com`;\r",
+							"  pm.environment.set(\"emailAdmin\", emailAdmin);\r",
+							"    return emailAdmin;\r",
+							"\r",
+							"}\r",
+							"\r",
+							"// Usage example:\r",
+							"const newEmail = generateRandomEmail();\r",
+							"console.log(newEmail);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"email\": \"{{emailAdmin}}\",\r\n\t\"password\": \"{{emailAdmin}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}register_admin",
+					"host": [
+						"{{base_url}}register_admin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1.b Register User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Verify registration succesful message\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.message).to.eql(\"User created successfully\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"function generateRandomEmail() {\r",
+							"  const randomNumber = Math.floor(Math.random() * 1000000); // Generates a random number between 0 and 999999\r",
+							"  const emailNormalUser = `testuserNormal${randomNumber}@example.com`;\r",
+							"  pm.environment.set(\"emailNormalUser\", emailNormalUser);\r",
+							"    return emailNormalUser;\r",
+							"\r",
+							"}\r",
+							"\r",
+							"// Usage example:\r",
+							"const emailNormalUser = generateRandomEmail();\r",
+							"console.log(emailNormalUser);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"email\": \"{{emailNormalUser}}\",\r\n\t\"password\": \"{{emailNormalUser}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}register",
+					"host": [
+						"{{base_url}}register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.a Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Verify that user is not admin\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.is_admin).to.eql(false);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify login message\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.message).to.eql(\"Login successful\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify user_id is number\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.user_id).to.eql(1419);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{normalUser}}\",\r\n    \"password\": \"{{normalUserPassword}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}login/",
+					"host": [
+						"{{base_url}}login"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2.b Login as Admin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Verify that user is not admin\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.is_admin).to.eql(true);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify login message\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.message).to.eql(\"Login successful\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify user_id is number\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.user_id).to.eql(1420);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"{{adminUserName}}\",\r\n    \"password\": \"{{adminPassword}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}login/",
+					"host": [
+						"{{base_url}}login"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3. Create New Ticket",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Parse the JSON response\r",
+							"let jsonData = pm.response.json();\r",
+							"\r",
+							"// Set the 'id' from the response to an environment variable\r",
+							"pm.environment.set(\"ticketId\", jsonData.id);\r",
+							"\r",
+							"// Validate if the environment variable has been set correctly\r",
+							"pm.test(\"Set 'ticketId' environment variable\", function () {\r",
+							"    pm.expect(pm.environment.get(\"ticketId\")).to.eql(jsonData.id);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Viplove Ticket\",\r\n    \"description\": \"Description of ticket by viplove\",\r\n    \"user_id\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}tickets/",
+					"host": [
+						"{{base_url}}tickets"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4. Get All Tickets Users & verify above ticket",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"// Parse the JSON response\r",
+							"let jsonData = pm.response.json();\r",
+							"\r",
+							"// The ticket ID you're searching for\r",
+							"let ticketIdToSearch = pm.variables.get(\"ticketId\");\r",
+							"\r",
+							"\r",
+							"// Use the JavaScript array's `find` method to check if the ticket with the specified ID exists\r",
+							"let ticket = jsonData.find(ticket => ticket.id === ticketIdToSearch);\r",
+							"\r",
+							"// Assert whether the ticket with the given ID exists\r",
+							"pm.test(\"Ticket with ID \" + ticketIdToSearch + \" exists in the response\", function () {\r",
+							"    pm.expect(ticket).to.be.an('object');\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}tickets/user/1",
+					"host": [
+						"{{base_url}}tickets"
+					],
+					"path": [
+						"user",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5. Create New Case",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Parse the JSON response\r",
+							"let jsonData = pm.response.json();\r",
+							"\r",
+							"// Set the 'id' from the response to an environment variable\r",
+							"pm.environment.set(\"caseId\", jsonData.id);\r",
+							"\r",
+							"// Validate if the environment variable has been set correctly\r",
+							"pm.test(\"Set 'caseId' environment variable\", function () {\r",
+							"    pm.expect(pm.environment.get(\"caseId\")).to.eql(jsonData.id);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"case_name\": \"aaaaaaaaaaaaaaaaaaasadasdasda\",\r\n    \"user_id\": 1,\r\n    \"item_id\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}cases/",
+					"host": [
+						"{{base_url}}cases"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6. Get All Cases 1 user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 2000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"\r",
+							"// Parse the JSON response\r",
+							"let jsonData = pm.response.json();\r",
+							"\r",
+							"// The ticket ID you're searching for\r",
+							"let caseIdToSearch = pm.variables.get(\"caseId\");\r",
+							"\r",
+							"\r",
+							"// Use the JavaScript array's `find` method to check if the ticket with the specified ID exists\r",
+							"let caseId = jsonData.find(caseId => caseId.id === caseIdToSearch);\r",
+							"\r",
+							"\r",
+							"// Assert whether the ticket with the given ID exists\r",
+							"pm.test(\"Ticket with ID \" + caseIdToSearch + \" exists in the response\", function () {\r",
+							"    pm.expect(caseId).to.be.an('object');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}cases/user/1",
+					"host": [
+						"{{base_url}}cases"
+					],
+					"path": [
+						"user",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
