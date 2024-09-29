@@ -49,22 +49,22 @@ Ensures that a case can be created and validated using a GET request.
 
 ## Test Descriptions
 
-# Admin User Creation
+Admin User Creation
 
 POST request to /admin/users
 Verifies if the admin user is successfully created and if the response status is 201.
 Normal User Creation
 
-# POST request to /users
+POST request to /users
 Verifies if a normal user is created successfully and checks for a status code of 201.
 Ticket Creation and Verification
 
-# POST request to /tickets for ticket creation.
-# GET request to /tickets/{id} to verify the created ticket exists.
+POST request to /tickets for ticket creation.
+GET request to /tickets/{id} to verify the created ticket exists.
 Case Creation and Verification
 
-# POST request to /cases for case creation.
-# GET request to /cases/{id} to verify the created case exists.
+POST request to /cases for case creation.
+GET request to /cases/{id} to verify the created case exists.
 
 
 ## Troubleshooting
