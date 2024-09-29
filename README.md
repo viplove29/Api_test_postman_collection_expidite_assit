@@ -1,7 +1,8 @@
-##Postman API Testing - User and Ticket Management
+#Postman API Testing - User and Ticket Management
 
-##Overview
-# This project includes a Postman collection and environment for testing the User and Ticket Management API. The tests validate API functionality to ensure the correct creation of admin users, normal users, tickets, and cases. All tests target the API endpoint:
+# Overview
+
+This project includes a Postman collection and environment for testing the User and Ticket Management API. The tests validate API functionality to ensure the correct creation of admin users, normal users, tickets, and cases. All tests target the API endpoint:
 http://100.27.30.112/api/
 
 Key API Tests:
