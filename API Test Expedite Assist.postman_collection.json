@@ -405,7 +405,7 @@
 			"response": []
 		},
 		{
-			"name": "6. Get All Cases 1 user",
+			"name": "6. Get All Cases & verify above cases created",
 			"event": [
 				{
 					"listen": "test",
